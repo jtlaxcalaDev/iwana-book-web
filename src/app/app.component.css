@@ -1,0 +1,14 @@
+.main-container{
+  background-color: #F7E2E2;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+mat-grid-tile {
+  background: #5B7DB1;
+  display: flex;
+  position: fixed;
+}
