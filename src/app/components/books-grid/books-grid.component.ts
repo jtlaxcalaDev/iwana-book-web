@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { BookFormComponent } from '../book-form/book-form.component'
 import { Book } from '../../model/books/books'
 import { BooksFactoryService } from '../../services/books-factory.service'
 
@@ -23,11 +25,24 @@ export class BooksGridComponent implements OnInit {
   ]
 
   constructor(
+    public dialog: MatDialog,
     private booksFactoryService: BooksFactoryService
   ) { }
 
   ngOnInit(): void {
     this.loadBooks()
+    this.addBook()
+  }
+
+  addBook() {
+    const dialogRef = this.dialog.open(BookFormComponent, {
+      width: '700px',
+      panelClass: 'custom-dialog-container'
+    })
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.loadBooks()
+    })
   }
 
   loadBooks() {

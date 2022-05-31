@@ -1,0 +1,108 @@
+  <div class="header-modal">
+    <div class="header-modal-title">Add new book</div>
+    <mat-icon mat-dialog-close>close</mat-icon>
+  </div>
+  <div class="body-modal">
+    <div class="form">
+      <div class="title">
+        <label for="types">Title: </label>
+        <input
+          placeholder="book title"
+          type="text"
+          maxlength="100"
+          name="title"
+          id="title"
+        />
+      </div>
+      <div class="editorial">
+        <label for="editorial">Editorial: </label>
+        <input
+          placeholder="editorial name"
+          type="text"
+          maxlength="100"
+          name="editorial"
+          id="editorial"
+        />
+      </div>
+      <div class="isbn">
+        <label for="isbn">ISBN: </label>
+        <input
+          placeholder="0000000000000"
+          type="text"
+          maxlength="13"
+          name="isbn"
+          id="isbn"
+        />
+      </div>
+      <div class="pages">
+        <label for="pages">Pages: </label>
+        <input
+          placeholder="200"
+          type="number"
+          maxlength="100"
+          name="pages"
+          id="pages"
+        />
+      </div>
+      <div class="year">
+        <label for="year">Release(year): </label>
+        <input
+          placeholder="2000"
+          type="text"
+          maxlength="4"
+          name="year"
+          id="year"
+        />
+      </div>
+      <div class="price">
+        <label for="price">Price:</label>
+        <input
+          placeholder="200.00"
+          type="text"
+          name="price"
+          id="price"
+        />
+      </div>
+      <div class="sinopsis">
+        <label for="sinopsis">Sinopsis: </label>
+        <input
+          placeholder="sinopsis"
+          type="text"
+          maxlength="1000"
+          name="sinopsis"
+          id="sinopsis"
+        />
+      </div>
+      <div class="categories">
+        <label for="categories">Categories: </label>
+        <input
+            placeholder="category name"
+            type="text"
+            class="categories-name"
+            name="categories-name"
+            id="categories-name"
+        />
+      </div>
+      <div class="authors">
+        <label for="authors">Authors: </label>
+        <input
+          placeholder="author name"
+          type="text"
+          class="authors-name"
+          name="authors-name"
+          id="authors-name"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="footer-modal">
+    <button class="footer-modal-btn-cancel" mat-flat-button mat-dialog-close>
+      Cancel
+    </button>
+    <button
+      class="footer-modal-btn-acept"
+      mat-flat-button
+    >
+      Add book
+    </button>
+  </div>
