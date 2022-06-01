@@ -31,7 +31,6 @@ export class BooksGridComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadBooks()
-    this.addBook()
   }
 
   addBook() {

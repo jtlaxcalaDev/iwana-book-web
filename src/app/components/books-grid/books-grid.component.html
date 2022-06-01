@@ -1,6 +1,7 @@
 <div class="grid-container">
   <div class="grid-head">
     <div class="grid-title">All Books</div>
+    <button mat-raised-button class="btn-new-book" (click)="addBook()"> <mat-icon>add</mat-icon> Add new book</button>
   </div>
   <div class="grid-body">
     <table mat-table [dataSource]="books">
