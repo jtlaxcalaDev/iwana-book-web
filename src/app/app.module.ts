@@ -12,12 +12,14 @@ import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { BooksGridComponent } from './components/books-grid/books-grid.component';
 import { BookFormComponent } from './components/book-form/book-form.component';
+import { BookFormEditComponent } from './components/book-form-edit/book-form-edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BooksGridComponent,
     BookFormComponent,
+    BookFormEditComponent,
   ],
   imports: [
     BrowserModule,

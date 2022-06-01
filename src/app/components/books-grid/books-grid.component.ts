@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { BookFormComponent } from '../book-form/book-form.component'
 import { Book } from '../../model/books/books'
 import { BooksFactoryService } from '../../services/books-factory.service'
+import { BookFormEditComponent } from '../book-form-edit/book-form-edit.component'
 
 @Component({
   selector: 'app-books-grid',
@@ -47,6 +48,17 @@ export class BooksGridComponent implements OnInit {
   loadBooks() {
     this.booksFactoryService.getBooks().subscribe((result) => {
       this.books = result.map(this.booksFactoryService.transformBookApi)
+    })
+  }
+
+  editBook() {
+    const dialogRef = this.dialog.open(BookFormEditComponent, {
+      width: '700px',
+      panelClass: 'custom-dialog-container',
+    })
+
+    dialogRef.afterClosed().subscribe((result) => {
+      this.loadBooks()
     })
   }
 

@@ -40,7 +40,7 @@
       <ng-container matColumnDef="edit" class="edit-column">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let book">
-          <button mat-raised-button class="btn-edit">
+          <button mat-raised-button class="btn-edit" (click)="editBook()">
             <mat-icon>edit</mat-icon>
           </button>
         </td>
