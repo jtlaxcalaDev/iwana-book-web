@@ -4,7 +4,7 @@ export interface Book {
   pages: string,
   editorial: string,
   isbn: string,
-  price: any,
+  price:  number,
   sinopsis: string,
   pubYear: string
 }
@@ -15,7 +15,17 @@ export interface BookApi {
   pages: string,
   editorial: string,
   isbn: string,
-  price: any,
+  price: number,
+  sinopsis: string,
+  pubYear: string
+}
+
+export interface BookRequest {
+  title: string
+  pages: string,
+  editorial: string,
+  isbn: string,
+  price: number,
   sinopsis: string,
   pubYear: string
 }

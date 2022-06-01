@@ -1,7 +1,7 @@
-/*books-factory.service.ts*/
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { Book, BookApi } from '../model/books/books'
+import { Book, BookApi, BookRequest } from '../model/books/books'
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -22,9 +22,13 @@ export class BooksFactoryService {
       pages: bookApi.pages,
       editorial: bookApi.editorial,
       isbn: bookApi.isbn,
-      price: bookApi.price.toFixed(2),
+      price: bookApi.price,
       sinopsis: bookApi.sinopsis,
       pubYear: bookApi.pubYear,
     }
+  }
+
+  createBook(request: BookRequest): Observable<BookApi>{
+    return this.http.post<BookApi>(this.BASE_URL, request)
   }
 }
