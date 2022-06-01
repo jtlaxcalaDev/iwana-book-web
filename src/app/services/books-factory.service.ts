@@ -31,4 +31,12 @@ export class BooksFactoryService {
   createBook(request: BookRequest): Observable<BookApi>{
     return this.http.post<BookApi>(this.BASE_URL, request)
   }
+
+  updateBook(
+    bookId: string,
+    bookRequest: BookRequest
+  ): Observable<BookApi> {
+    const url = `${this.BASE_URL}/${bookId}`
+    return this.http.put<BookApi>(url, bookRequest)
+  }
 }

@@ -51,10 +51,13 @@ export class BooksGridComponent implements OnInit {
     })
   }
 
-  editBook() {
+  editBook(book: Book) {
     const dialogRef = this.dialog.open(BookFormEditComponent, {
       width: '700px',
       panelClass: 'custom-dialog-container',
+      data: {
+        ...book
+      }
     })
 
     dialogRef.afterClosed().subscribe((result) => {
