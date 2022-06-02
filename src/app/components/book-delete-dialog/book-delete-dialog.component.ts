@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 import { BooksFactoryService } from 'src/app/services/books-factory.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-book-delete-dialog',
@@ -16,13 +17,22 @@ export class BookDeleteDialogComponent {
       id: string
       title: string
     },
-    private booksFactoryService: BooksFactoryService
+    private booksFactoryService: BooksFactoryService,
+    private snackBar: MatSnackBar,
   ) { }
 
   onDelete() {
     this.booksFactoryService
       .deleteBook(this.data.id)
-      .subscribe((result) => {
+      .subscribe(() => {
+        this.snackBar.open(
+          `the book ${this.data.title} has been deleted`,
+          '',
+          {
+            duration: 2500,
+            panelClass: ['deleted-snackbar']
+          }
+        )
         this.dialogRef.close()
       })
   }
