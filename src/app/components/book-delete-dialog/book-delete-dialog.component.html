@@ -1,0 +1,26 @@
+<div class="delete-dialog">
+  <div class="header-modal">
+    <div class="header-close-icon"><mat-icon class="icon-close" mat-dialog-close>close</mat-icon></div>
+    <mat-icon class="mat-delete-icon">delete_outline</mat-icon>
+    <h3 class="header-modal-title">Delete Book</h3>
+  </div>
+  <div class="body-modal" style="text-align: center;">
+    <div class="form">
+      <div class="delete-message">
+        <div style="color: gray;">Are you sure you want to delete book: <p style="color: #4d2d2b;">{{ data.title }}?</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-modal">
+    <button class="footer-modal-btn-cancel" mat-flat-button mat-dialog-close>
+      Cancel
+    </button>
+    <button
+      class="modal-footer-btn-confirm"
+      mat-flat-button
+      (click) = "onDelete()"
+    >
+      Yes, Delete book
+    </button>
+  </div>
+</div>

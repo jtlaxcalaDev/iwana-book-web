@@ -39,4 +39,11 @@ export class BooksFactoryService {
     const url = `${this.BASE_URL}/${bookId}`
     return this.http.put<BookApi>(url, bookRequest)
   }
+
+  deleteBook(bookId: string) {
+    const url = `${this.BASE_URL}/${bookId}`
+    return this.http.delete<string>(url, {
+      responseType: 'text' as 'json'
+    })
+  }
 }

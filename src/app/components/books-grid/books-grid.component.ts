@@ -4,6 +4,7 @@ import { BookFormComponent } from '../book-form/book-form.component'
 import { Book } from '../../model/books/books'
 import { BooksFactoryService } from '../../services/books-factory.service'
 import { BookFormEditComponent } from '../book-form-edit/book-form-edit.component'
+import { BookDeleteDialogComponent } from '../book-delete-dialog/book-delete-dialog.component';
 
 @Component({
   selector: 'app-books-grid',
@@ -57,6 +58,21 @@ export class BooksGridComponent implements OnInit {
       panelClass: 'custom-dialog-container',
       data: {
         ...book
+      }
+    })
+
+    dialogRef.afterClosed().subscribe((result) => {
+      this.loadBooks()
+    })
+  }
+
+  deleteBook(book: Book) {
+    const dialogRef = this.dialog.open(BookDeleteDialogComponent, {
+      width: '450px',
+      panelClass: 'custom-dialog-container',
+      data: {
+        id: book.id,
+        title: book.title
       }
     })
 
