@@ -6,7 +6,9 @@ export interface Book {
   isbn: string,
   price:  number,
   sinopsis: string,
-  pubYear: string
+  pubYear: string,
+  authors: BookAuthorResource[]
+  categories: BookCategoryResource[]
 }
 
 export interface BookApi {
@@ -17,7 +19,31 @@ export interface BookApi {
   isbn: string,
   price: number,
   sinopsis: string,
-  pubYear: string
+  pubYear: string,
+  authors: BookAuthorResource[]
+  categories: BookCategoryResource[]
+}
+
+export interface BookAuthorResource {
+  id: string
+  name: string
+  lastName: string
+}
+
+export interface BookCategoryResource {
+  id: string
+  name: string
+}
+
+export interface BookAuthorRequest {
+  id?: string
+  name: string
+  lastName: string
+}
+
+export interface BookCategoryRequest {
+  id?: string
+  name: string
 }
 
 export interface BookRequest {
@@ -27,5 +53,7 @@ export interface BookRequest {
   isbn: string,
   price: number,
   sinopsis: string,
-  pubYear: string
+  pubYear: string,
+  authors: BookAuthorRequest[]
+  categories: BookCategoryRequest[]
 }

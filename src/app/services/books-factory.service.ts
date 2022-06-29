@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Book, BookApi, BookRequest } from '../model/books/books'
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BooksFactoryService {
-  BASE_URL = `/api/books`
+  BASE_URL = `${environment.baseUrl}/books`
 
   constructor(private http: HttpClient) { }
 
@@ -25,6 +26,8 @@ export class BooksFactoryService {
       price: bookApi.price,
       sinopsis: bookApi.sinopsis,
       pubYear: bookApi.pubYear,
+      authors: bookApi.authors,
+      categories: bookApi.categories
     }
   }
 

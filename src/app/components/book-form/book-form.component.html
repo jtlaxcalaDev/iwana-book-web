@@ -92,14 +92,40 @@
         />
       </div>
       <div class="authors">
-        <label for="authors">Authors: </label>
-        <input
-          placeholder="author name"
-          type="text"
-          class="authors-name"
-          name="authors-name"
-          id="authors-name"
-        />
+        <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+          <label for="authors">Authors: </label>
+          <button mat-raised-button (click)="addAuthor()" style="background-color: #615c5a; color: #dadad9;">+ Add author</button>
+        </div>
+
+        <div formArrayName="authors">
+          <div
+            class="author-container"
+            *ngFor="let _ of getAuthorsFormArray().controls; index as i"
+          >
+            <div [formGroupName]="i" class="author-container"
+              style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; margin: .5rem 0;"
+            >
+              <input
+                placeholder="author name"
+                class="author-input"
+                type="text"
+                maxlength="50"
+                formControlName="name"
+              />
+              <input
+                placeholder="author last name"
+                class="author-input"
+                type="text"
+                maxlength="50"
+                formControlName="lastName"
+              />
+              <mat-icon class="remove-author-icon" (click)="deleteAuthor(i)"
+                style="background-color: #b54e56; color: #dadad9;"
+              >close</mat-icon
+              >
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
