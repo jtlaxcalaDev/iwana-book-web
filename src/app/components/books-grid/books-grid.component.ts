@@ -16,8 +16,10 @@ export class BooksGridComponent implements OnInit {
   displayedColumns: string[] = [
     'id',
     'title',
+    'authors',
     'pages',
     'editorial',
+    'categories',
     'isbn',
     'price',
     'sinopsis',
