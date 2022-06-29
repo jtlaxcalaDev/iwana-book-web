@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FormArray, FormBuilder } from '@angular/forms'
 import { BooksFactoryService } from '../../services/books-factory.service'
-import { BookAuthorRequest } from '../../model/books/books';
+import { BookAuthorRequest, BookCategoryRequest } from '../../model/books/books';
 
 @Component({
   selector: 'app-book-form',
@@ -19,7 +19,7 @@ export class BookFormComponent {
     sinopsis: '',
     pubYear: '',
     authors: this.formBuilder.array([]),
-    categories: []
+    categories: this.formBuilder.array([])
   })
 
   constructor(
@@ -32,6 +32,10 @@ export class BookFormComponent {
     return this.bookForm.get('authors') as FormArray
   }
 
+  getCategoriesFormArray(): FormArray {
+    return this.bookForm.get('categories') as FormArray
+  }
+
   getAuthors(): BookAuthorRequest[] {
     return this.getAuthorsFormArray().controls.map(({ value: { name, lastName } }) => ({
       name,
@@ -39,8 +43,18 @@ export class BookFormComponent {
     }))
   }
 
+  getCategories(): BookCategoryRequest[] {
+    return this.getCategoriesFormArray().controls.map(({ value: { name } }) => ({
+      name
+    }))
+  }
+
   deleteAuthor(indexToDelete: number) {
     this.getAuthorsFormArray().removeAt(indexToDelete)
+  }
+
+  deleteCategory(indexToDelete: number) {
+    this.getCategoriesFormArray().removeAt(indexToDelete)
   }
 
   addAuthor() {
@@ -49,6 +63,15 @@ export class BookFormComponent {
         id: undefined,
         name: '',
         lastName: ''
+      })
+    )
+  }
+
+  addCategory() {
+    this.getCategoriesFormArray().push(
+      this.formBuilder.group({
+        id: undefined,
+        name: '',
       })
     )
   }
@@ -68,12 +91,18 @@ export class BookFormComponent {
         authors: this.getAuthors().filter(
           ({ name, lastName }) => !this.isAuthorEmpty(name, lastName)
         ),
-        categories: []
+        categories: this.getCategories().filter(
+          ({ name }) => !this.isCategoryEmpty(name)
+        )
       }
     ).subscribe(()=>{this.dialogRef.close()})
   }
 
   isAuthorEmpty(name: string, lastName: string) {
     return name.trim() === '' && lastName.trim() === ''
+  }
+
+  isCategoryEmpty(name: string) {
+    return name.trim() === ''
   }
 }

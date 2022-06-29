@@ -82,14 +82,33 @@
         />
       </div>
       <div class="categories">
-        <label for="categories">Categories: </label>
-        <input
-          placeholder="category name"
-          type="text"
-          class="categories-name"
-          name="categories-name"
-          id="categories-name"
-        />
+        <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+          <label for="categories">Categories: </label>
+          <button mat-raised-button (click)="addCategory()" style="background-color: #615c5a; color: #dadad9;">+ Add category</button>
+        </div>
+
+        <div formArrayName="categories">
+          <div
+            class="category-container"
+            *ngFor="let _ of getCategoriesFormArray().controls; index as i"
+          >
+            <div [formGroupName]="i" class="category-container"
+              style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; margin: .5rem 0;"
+            >
+              <input
+                placeholder="category name"
+                class="category-input"
+                type="text"
+                maxlength="50"
+                formControlName="name"
+              />
+              <mat-icon class="remove-category-icon" (click)="deleteCategory(i)"
+                style="background-color: #b54e56; color: #dadad9;"
+              >close</mat-icon
+              >
+            </div>
+          </div>
+        </div>
       </div>
       <div class="authors">
         <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
